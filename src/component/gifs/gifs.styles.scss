@@ -1,0 +1,107 @@
+$componentColor: hsl(210, 3%, 15%);
+$lightText: hsl(223, 15%, 91%);
+$darkText: hsl(214, 4%, 67%);
+$blueColor: hsl(215, 100%, 59%);
+
+$elementColor: hsl(200, 3%, 23%);
+$elementHoverColor: hsl(200, 3%, 28%);
+$textColor: hsl(218, 5%, 71%);
+
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.gifs {
+  box-sizing: border-box;
+  background-color: $componentColor;
+  padding: 0.5em 0em 1em;
+  border-radius: 10px;
+  color: $lightText;
+  position: fixed;
+  height: 160%;
+  top: -30%;
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  max-width: 746px;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%);
+  }
+
+  .header {
+    border-bottom: 1px solid hsl(200, 3%, 22%);
+
+    .back-button {
+      position: absolute;
+      background-color: $elementColor;
+      border-radius: 50%;
+      padding: 0.4em;
+      left: 1em;
+      top: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $elementHoverColor;
+      }
+
+      img {
+        vertical-align: middle;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.25em;
+    }
+  }
+
+  .search-bar {
+    margin: 0.5em 1.25em;
+    padding: 0 1em;
+    border-radius: 15em;
+    background-color: $elementColor;
+    position: relative;
+    border-top: 1px solid $elementHoverColor;
+
+    img {
+      position: absolute;
+      left: 0.5em;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    input {
+      width: 100%;
+      background-color: $elementColor;
+      border: none;
+      padding: 0.75em 1.25em;
+      outline: none;
+      color: $lightText;
+    }
+  }
+
+  .gifs-container {
+    max-height: 70vh;
+    overflow-y: scroll;
+    overflow: -moz-scrollbars-none;
+
+    &::-webkit-scrollbar {
+      width: 0 !important;
+    }
+
+    img {
+      width: 100%;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+  }
+}

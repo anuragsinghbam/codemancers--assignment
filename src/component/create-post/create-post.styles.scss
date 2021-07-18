@@ -1,20 +1,207 @@
+$componentColor: hsl(210, 3%, 15%);
+$lightText: hsl(223, 15%, 91%);
+$darkText: hsl(214, 4%, 67%);
+
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
 .create-post {
-  .top-section {
-    display: flex;
+  background-color: $componentColor;
+  padding: 0.5em 0em 1em;
+  border-radius: 10px;
+  margin-top: 2em;
+  color: $lightText;
+  width: 90%;
+  max-width: 746px;
+  left: 50%;
+  top: 46%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 5;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .component-header {
+    @include flex(center, center);
+    position: relative;
+
+    h2 {
+      font-size: 1.25em;
+    }
+
+    .cross-icon {
+      position: absolute;
+      background-color: hsl(210, 2%, 23%);
+      @include flex(center, center);
+      width: 24px;
+      border-radius: 50%;
+      height: 24px;
+      right: 1.5em;
+      padding: 1em;
+      cursor: pointer;
+
+      span {
+        font-size: 2em;
+        user-select: none;
+        margin-top: 2px;
+        padding: 0;
+        color: hsl(214, 4%, 67%);
+      }
+
+      &:hover {
+        background-color: hsl(210, 2%, 30%);
+      }
+    }
+  }
+
+  .user-profile {
+    @include flex(flex-start, center);
+    border-top: 1px solid hsl(210, 2%, 20%);
+    padding: 1em 1.25em 0;
+
+    p {
+      margin: 0;
+    }
+
+    .user-name {
+      .post-status {
+        background-color: #3a3b3c;
+        @include flex(center, center);
+        width: 90%;
+        margin-top: 0.25em;
+        font-size: 0.85em;
+        color: $lightText;
+        padding: 0.25em 0.5em;
+        border-radius: 5px;
+        user-select: none;
+
+        img {
+          width: 16px;
+        }
+      }
+    }
 
     img {
       border-radius: 50%;
       width: 50px;
+      margin-right: 0.5em;
     }
-    div {
-      width: 100%;
-      background-color: #3A3B3C;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0em 1em;
-      border-radius: 50px;
+  }
+
+  .write-post {
+    position: relative;
+    padding: 0 1.25em;
+
+    .post-title-text {
+      background: $componentColor;
+      min-width: 100%;
+      max-width: 100%;
+      display: inline-block;
+      min-height: 6em;
+      resize: none;
+      font-size: 1.5em;
+      margin-top: 0.75em;
+      border: none;
+      outline: none;
     }
 
+    .selected-gif {
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+
+      div {
+        background-color: hsl(210, 2%, 23%);
+        position: absolute;
+        @include flex(center, center);
+        width: 24px;
+        border-radius: 50%;
+        height: 24px;
+        top: 0.5em;
+        right: 0.5em;
+        padding: 1em;
+        cursor: pointer;
+        
+        span {
+          font-size: 2em;
+          user-select: none;
+          margin-top: 2px;
+          padding: 0;
+          color: hsl(214, 4%, 67%);
+        }
+  
+        &:hover {
+          background-color: hsl(210, 2%, 30%);
+        }
+      }
+      
+      img {
+        width: 100%;
+        vertical-align: middle;
+      }
+    }
+
+    span[contenteditable='true']:empty:before {
+      content: attr(placeholder);
+      pointer-events: none;
+      display: block;
+      color: $darkText;
+    }
+  }
+
+  .add-to-post {
+    @include flex(space-between, center);
+    span {
+      user-select: none;
+    }
+
+    border-radius: 5px;
+    border: 1px solid hsl(210, 2%, 23%);
+    padding: 0.75em 1em;
+    margin: 1em 1.25em;
+
+    .icons {
+      @include flex(center, center);
+
+      img {
+        cursor: not-allowed;
+      }
+
+      img + img {
+        margin-left: 0.75em;
+      }
+
+      .gif-icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .btn-container {
+    padding: 0 1.25em;
+    .post-btn {
+      width: 100%;
+      background-color: hsl(214, 100%, 59%);
+      color: $lightText;
+      border: none;
+      border-radius: 5px;
+      padding: 0.75em 0;
+      font-size: 0.9em;
+      font-weight: 600;
+      cursor: pointer;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: hsl(214, 100%, 62%);
+      }
+    }
   }
 }

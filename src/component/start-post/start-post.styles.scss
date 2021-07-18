@@ -1,0 +1,76 @@
+$componentColor: hsl(210, 3%, 15%);
+$elementColor: hsl(200, 3%, 23%);
+$elementHoverColor: hsl(200, 3%, 28%);
+$textColor: hsl(218, 5%, 71%);
+
+.start-post {
+  background-color: $componentColor;
+  padding: 0.75em 1.25em;
+  border-radius: 10px;
+  width: 100%;
+  color: $textColor;
+
+  .top-section {
+    display: flex;
+    border-bottom: 1px solid $elementColor;
+    padding-bottom: 1em;
+
+    img {
+      border-radius: 50%;
+      width: 50px;
+      margin-right: 0.5em;
+    }
+    div {
+      width: 100%;
+      background-color: $elementColor;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0em 1.5em;
+      border-radius: 50px;
+      cursor: pointer;
+
+      span {
+        font-size: 1.2em;
+        user-select: none;
+      }
+
+      &:hover {
+        background-color: $elementHoverColor;
+      }
+    }
+  }
+
+  .bottom-section {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1em;
+    gap: 1em;
+
+    .feeling-activity {
+      @media (max-width: 550px) {
+        display: none;
+      }
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+      padding: 0.5em 0;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      user-select: none;
+
+      img {
+        margin-right: 0.25em;
+      }
+
+      &:hover {
+        background-color: $elementColor;
+      }
+    }
+  }
+}
